@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SOFA_bioscoop.Domain
+{ 
     public class CreatedState : ISprintState
 {
     public void AddBacklogItem(Sprint sprint, BacklogItem item)

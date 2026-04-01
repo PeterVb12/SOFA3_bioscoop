@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOFA_bioscoop.Domain
 {
-    public class BacklogItem
+    internal class ThreadObserver
     {
     }
 }

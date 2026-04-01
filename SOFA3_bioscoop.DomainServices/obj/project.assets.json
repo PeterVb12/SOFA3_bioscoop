@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\AVANS\\AVANS_jaar3\\Periode_3\\SOFA_3\\SOFA3_bioscoop\\SOFA_bioscoop.Domain\\SOFA3_bioscoop.Domain.csproj",
-      "projectName": "SOFA3_bioscoop.Domain",
-      "projectPath": "C:\\AVANS\\AVANS_jaar3\\Periode_3\\SOFA_3\\SOFA3_bioscoop\\SOFA_bioscoop.Domain\\SOFA3_bioscoop.Domain.csproj",
+      "projectUniqueName": "C:\\AVANS\\AVANS_jaar3\\Periode_3\\SOFA_3\\SOFA3_bioscoop\\SOFA3_bioscoop.DomainServices\\SOFA3_bioscoop.DomainServices.csproj",
+      "projectName": "SOFA3_bioscoop.DomainServices",
+      "projectPath": "C:\\AVANS\\AVANS_jaar3\\Periode_3\\SOFA_3\\SOFA3_bioscoop\\SOFA3_bioscoop.DomainServices\\SOFA3_bioscoop.DomainServices.csproj",
       "packagesPath": "C:\\Users\\peter\\.nuget\\packages\\",
-      "outputPath": "C:\\AVANS\\AVANS_jaar3\\Periode_3\\SOFA_3\\SOFA3_bioscoop\\SOFA_bioscoop.Domain\\obj\\",
+      "outputPath": "C:\\AVANS\\AVANS_jaar3\\Periode_3\\SOFA_3\\SOFA3_bioscoop\\SOFA3_bioscoop.DomainServices\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\peter\\AppData\\Roaming\\NuGet\\NuGet.Config",
