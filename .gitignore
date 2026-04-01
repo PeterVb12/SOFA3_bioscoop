@@ -3,6 +3,9 @@
 
 bin/
 obj/
+**/bin/
+**/obj/
+*.cache
 
 # Visual Studio files
 
