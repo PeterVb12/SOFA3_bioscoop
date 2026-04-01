@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SOFA_bioscoop.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68069b0c45ff1952b13a9025eb0de3505255a154")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d59af3af4ff501566bf41c1577dc5e10a1468ed6")]
 [assembly: System.Reflection.AssemblyProductAttribute("SOFA_bioscoop.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SOFA_bioscoop.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

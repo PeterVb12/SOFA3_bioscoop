@@ -8,5 +8,6 @@ namespace SOFA_bioscoop.Domain
 {
     public interface ISprintTypeStrategy
     {
+
     }
 }
