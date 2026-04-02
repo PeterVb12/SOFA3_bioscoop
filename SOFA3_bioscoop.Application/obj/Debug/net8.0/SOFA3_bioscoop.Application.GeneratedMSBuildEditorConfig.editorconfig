@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SOFA3_bioscoop.Application
-build_property.ProjectDir = C:\AVANS\AVANS_jaar3\Periode_3\SOFA_3\SOFA3_bioscoop\SOFA3_bioscoop.Application\
+build_property.ProjectDir = C:\Users\hoiik\Documents\GitHub\SOFA3_bioscoop\SOFA3_bioscoop.Application\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

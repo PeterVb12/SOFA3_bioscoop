@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\peter\\.nuget\\packages\\": {}
+    "C:\\Users\\hoiik\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\AVANS\\AVANS_jaar3\\Periode_3\\SOFA_3\\SOFA3_bioscoop\\SOFA3_bioscoop.Infrastructure\\SOFA3_bioscoop.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\hoiik\\Documents\\GitHub\\SOFA3_bioscoop\\SOFA3_bioscoop.Infrastructure\\SOFA3_bioscoop.Infrastructure.csproj",
       "projectName": "SOFA3_bioscoop.Infrastructure",
-      "projectPath": "C:\\AVANS\\AVANS_jaar3\\Periode_3\\SOFA_3\\SOFA3_bioscoop\\SOFA3_bioscoop.Infrastructure\\SOFA3_bioscoop.Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\peter\\.nuget\\packages\\",
-      "outputPath": "C:\\AVANS\\AVANS_jaar3\\Periode_3\\SOFA_3\\SOFA3_bioscoop\\SOFA3_bioscoop.Infrastructure\\obj\\",
+      "projectPath": "C:\\Users\\hoiik\\Documents\\GitHub\\SOFA3_bioscoop\\SOFA3_bioscoop.Infrastructure\\SOFA3_bioscoop.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\hoiik\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hoiik\\Documents\\GitHub\\SOFA3_bioscoop\\SOFA3_bioscoop.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\peter\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hoiik\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -67,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.419/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

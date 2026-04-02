@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SOFA3_bioscoop.DomainServices")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0927b403499cb24a26a714bb8600fe7ab86cf863")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b7eaf81c251f147bc7107f512c26116fb54bc6a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SOFA3_bioscoop.DomainServices")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SOFA3_bioscoop.DomainServices")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
