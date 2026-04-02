@@ -11,57 +11,57 @@ namespace SOFA_bioscoop.Domain
     {
         public void AddBacklogItem(Sprint sprint, BacklogItem item)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is finished");
         }
 
         public void CancelRelease(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is finished, start release first");
         }
 
         public void FinishSprint(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is finished");
         }
 
         public void HandlePostFinish(Sprint sprint)
         {
-            throw new NotImplementedException();
+            sprint.SetState(sprint.GetPostFinishedState());
         }
 
         public void OnPipelineFailure(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is finished, start pipeline first");
         }
 
         public void OnPipelineSuccess(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is finished, start pipeline first");
         }
 
         public void RetryRelease(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is finished, start release first");
         }
 
         public void StartPipeline(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is finished, start pipeline first");
         }
 
         public void StartSprint(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is finished");
         }
 
         public void UploadReviewSummary(Sprint sprint, Document summary)
         {
-            throw new NotImplementedException();
+            //generate review method call
         }
 
         public void ValidateEdit(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is finished");
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOFA3_bioscoop.Domain
+namespace SOFA_bioscoop.Domain
 {
     public class ClosedState : ISprintState
     {
