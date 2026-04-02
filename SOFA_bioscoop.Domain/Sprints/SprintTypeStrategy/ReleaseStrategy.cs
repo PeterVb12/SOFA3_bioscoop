@@ -8,5 +8,14 @@ namespace SOFA_bioscoop.Domain
 {
     public class ReleaseStrategy : ISprintTypeStrategy
     {
+        public void cancel(Sprint sprint)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void executePostFinish(Sprint sprint)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

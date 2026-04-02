@@ -1,13 +1,14 @@
-﻿using System;
+﻿using SOFA_bioscoop.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOFA_bioscoop.Domain
+namespace SOFA3_bioscoop.Domain
 {
-    public class InReviewState : ISprintState
+    public class ClosedState : ISprintState
     {
         public void AddBacklogItem(Sprint sprint, BacklogItem item)
         {
