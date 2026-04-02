@@ -8,7 +8,7 @@ namespace SOFA_bioscoop.Domain
 {
     public interface ISprintTypeStrategy
     {
-        void executePostFinish(Sprint sprint);
+        ISprintState getPostFinishState(Sprint sprint);
         void cancel(Sprint sprint);
     }
 }

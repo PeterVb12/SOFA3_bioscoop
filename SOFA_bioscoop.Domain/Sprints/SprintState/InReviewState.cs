@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace SOFA_bioscoop.Domain
 {
@@ -11,7 +13,7 @@ namespace SOFA_bioscoop.Domain
     {
         public void AddBacklogItem(Sprint sprint, BacklogItem item)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is in review");
         }
 
         public void CancelRelease(Sprint sprint)
@@ -54,9 +56,22 @@ namespace SOFA_bioscoop.Domain
             throw new NotImplementedException();
         }
 
-        public void UploadReviewSummary(Sprint sprint, Document summary)
+        //"De
+        //scrum master initieert de bijbehorende actie en kan deze alleen uitvoeren wanneer hij een
+        //samenvatting van de review als document voor de sprint heeft geüpload."
+        public void UploadReviewSummary(Sprint sprint, string summary)
         {
-            throw new NotImplementedException();
+            sprint.SetReviewSummary(summary);
+        }
+
+        public void MarkAsReviewed(Sprint sprint)
+        {
+            if (!sprint.HasReviewSummary())
+            {
+                throw new InvalidOperationException("Upload review summary first");
+            }
+
+            sprint.SetState(sprint.GetClosedState());
         }
 
         public void ValidateEdit(Sprint sprint)

@@ -10,7 +10,7 @@ namespace SOFA_bioscoop.Domain
     public interface ISprintState
     {
 
-        void EditSprint(Sprint sprint, string name, DateTime startDate, DateTime endDate);
+        void ValidateEdit(Sprint sprint);
 
         void AddBacklogItem(Sprint sprint, BacklogItem item);
 
@@ -27,7 +27,7 @@ namespace SOFA_bioscoop.Domain
 
         void RetryRelease(Sprint sprint);
         void CancelRelease(Sprint sprint);
-
-        void UploadReviewSummary(Sprint sprint, Document summary);
+        void UploadReviewSummary(Sprint sprint, string summary);
+        void MarkAsReviewed(Sprint sprint);
     }
 }

@@ -13,9 +13,9 @@ namespace SOFA_bioscoop.Domain
             throw new NotImplementedException();
         }
 
-        public void executePostFinish(Sprint sprint)
+        public ISprintState getPostFinishState(Sprint sprint)
         {
-            throw new NotImplementedException();
+            return sprint.GetReleasingState();
         }
     }
 }
