@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +18,7 @@ namespace SOFA_bioscoop.Domain
         private Project linkedProject;
         private ISprintState state;
         private string? reviewSummary;
+        private DevelopmentPipeline? developmentPipeline;
 
         // Alle states als attributes
         private readonly ISprintState createdState;
@@ -129,6 +130,17 @@ namespace SOFA_bioscoop.Domain
         public void HandlePostFinish()
         {
             state.HandlePostFinish(this);
+        }
+
+        public DevelopmentPipeline? Pipeline
+        {
+            get { return developmentPipeline; }
+            set { developmentPipeline = value; }
+        }
+
+        public void RunReleasePipeline()
+        {
+            developmentPipeline?.ReleasePipeline();
         }
 
         public void StartPipeline()
