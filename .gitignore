@@ -1,1 +1,91 @@
 .vs/
+.vs/
+# Build results
+
+bin/
+obj/
+**/bin/
+**/obj/
+*.cache
+
+# Visual Studio files
+
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+
+.idea/
+*.sln.iml
+
+# VS Code
+
+.vscode/
+
+# Logs
+
+*.log
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# NuGet
+
+*.nupkg
+packages/
+.nuget/
+
+# Test results
+
+TestResults/
+*.trx
+
+# Coverage reports
+
+coverage/
+*.coverage
+*.coveragexml
+
+# SonarCloud / analysis
+
+.sonar/
+
+# Environment files
+
+.env
+.env.*
+
+# Generated files
+
+*.generated.cs
+
+# Publish output
+
+publish/
+
+# Temporary files
+
+*.tmp
+*.temp
+
+# Resharper
+
+_ReSharper*/
+*.DotSettings.user
+
+# Backup files
+
+*.bak
+
+# Rider caches
+
+.idea/
+
+# Docker (optional)
+
+docker-compose.override.yml
