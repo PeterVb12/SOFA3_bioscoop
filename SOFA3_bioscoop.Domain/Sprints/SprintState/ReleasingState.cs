@@ -16,8 +16,8 @@ namespace SOFA_bioscoop.Domain
 
         public void CancelRelease(Sprint sprint)
         {
-            sprint.notificationService.Send(sprint.GetScrumMaster(), "Results insufficient, release cancelled");
-            sprint.notificationService.Send(sprint.GetProductOwner(), "Results insufficient, release cancelled");
+            sprint.notificationService?.Send(sprint.GetScrumMaster(), "Results insufficient, release cancelled");
+            sprint.notificationService?.Send(sprint.GetProductOwner(), "Results insufficient, release cancelled");
             sprint.SetState(sprint.GetCancelledState());
         }
 
@@ -50,16 +50,17 @@ namespace SOFA_bioscoop.Domain
         {
             try
             {
-                //!!moet exception uit komen
+                if (sprint.developmentPipeline == null)
+                    throw new InvalidOperationException("No development pipeline configured.");
+
                 sprint.developmentPipeline.ReleasePipeline();
-                sprint.notificationService.Send(sprint.GetScrumMaster(), "Release succesful");
+                sprint.notificationService?.Send(sprint.GetScrumMaster(), "Release succesful");
                 sprint.SetState(sprint.GetReleasedState());
             }
             catch (Exception)
             {
-                sprint.notificationService.Send(sprint.GetScrumMaster(), "Release failed");
+                sprint.notificationService?.Send(sprint.GetScrumMaster(), "Release failed");
             }
-            
         }
 
         public void StartSprint(Sprint sprint)

@@ -20,7 +20,7 @@ namespace SOFA_bioscoop.Domain
         private ISprintState state;
         private string? reviewSummary;
         public DevelopmentPipeline? developmentPipeline;
-        public INotificationService notificationService;
+        public INotificationService? notificationService;
         private List<Person> scrumTeam = new List<Person>();
 
         // Alle states als attributes
@@ -32,6 +32,7 @@ namespace SOFA_bioscoop.Domain
         private readonly ISprintState failedReleaseState;
         private readonly ISprintState cancelledState;
         private readonly ISprintState inReviewState;
+        private readonly ISprintState reviewedState;
         private readonly ISprintState closedState;
 
         public Sprint(string name,
@@ -40,8 +41,8 @@ namespace SOFA_bioscoop.Domain
                       List<BacklogItem> sprintBacklog,
                       ISprintTypeStrategy strategy,
                       Project linkedProject,
-                      DevelopmentPipeline developmentPipeline,
-                      INotificationService notificationService)
+                      DevelopmentPipeline? developmentPipeline = null,
+                      INotificationService? notificationService = null)
         {
             this.name = name;
             this.startDate = startDate;
@@ -61,6 +62,7 @@ namespace SOFA_bioscoop.Domain
             failedReleaseState = new FailedReleaseState();
             cancelledState = new CancelledState();
             inReviewState = new InReviewState();
+            reviewedState = new ReviewedState();
             closedState = new ClosedState();
 
             // Beginstate
@@ -76,7 +78,39 @@ namespace SOFA_bioscoop.Domain
         public ISprintState GetFailedReleaseState() => failedReleaseState;
         public ISprintState GetCancelledState() => cancelledState;
         public ISprintState GetInReviewState() => inReviewState;
+        public ISprintState GetReviewedState() => reviewedState;
         public ISprintState GetClosedState() => closedState;
+
+        /// <summary>Compatibiliteit met oudere code / tests (zelfde als NotificationService property).</summary>
+        public INotificationService? NotificationService
+        {
+            get => notificationService;
+            set => notificationService = value;
+        }
+
+        public void AddPerson(Person person) => AddTeamMember(person);
+
+        public Person GetScrumMaster()
+        {
+            foreach (Person person in scrumTeam)
+            {
+                if (person.Role == Role.ScrumMaster)
+                    return person;
+            }
+
+            throw new InvalidOperationException("No Scrum Master in sprint team.");
+        }
+
+        public Person GetProductOwner()
+        {
+            foreach (Person person in scrumTeam)
+            {
+                if (person.Role == Role.ProductOwner)
+                    return person;
+            }
+
+            throw new InvalidOperationException("No Product Owner in sprint team.");
+        }
         public ISprintState GetPostFinishedState() => strategy.getPostFinishState(this);
 
         public void SetState(ISprintState state) => this.state = state;
@@ -167,10 +201,10 @@ namespace SOFA_bioscoop.Domain
             }
             catch (Exception)
             {
-                if (NotificationService != null && developmentPipeline != null)
+                if (notificationService != null && developmentPipeline != null)
                 {
                     Person sm = GetScrumMaster();
-                    NotificationService.Send(sm, "Pipeline failed");
+                    notificationService.Send(sm, "Pipeline failed");
                 }
             }
         }

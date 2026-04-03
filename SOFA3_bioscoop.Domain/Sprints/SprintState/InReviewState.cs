@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
@@ -71,7 +71,7 @@ namespace SOFA_bioscoop.Domain
                 throw new InvalidOperationException("Upload review summary first");
             }
 
-            sprint.SetState(sprint.GetRe);
+            sprint.SetState(sprint.GetReviewedState());
         }
 
         public void ValidateEdit(Sprint sprint)
