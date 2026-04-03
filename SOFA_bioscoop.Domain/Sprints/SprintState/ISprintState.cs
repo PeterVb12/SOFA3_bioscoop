@@ -17,11 +17,8 @@ namespace SOFA_bioscoop.Domain
         void StartSprint(Sprint sprint);
 
         void FinishSprint(Sprint sprint);
-
         void HandlePostFinish(Sprint sprint);
-
         void StartPipeline(Sprint sprint);
-
         void OnPipelineSuccess(Sprint sprint);
         void OnPipelineFailure(Sprint sprint);
 
