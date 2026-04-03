@@ -9,7 +9,7 @@ namespace SOFA_bioscoop.Domain
             this.exportStrategy = exportStrategy;
         }
 
-        public SprintReport generateReport(Sprint sprint)
+        private SprintReport createSprintReportDto(Sprint sprint)
         {
             string companyName = "SOFA Company";
             string projectName = "Unknown Project";
@@ -19,14 +19,33 @@ namespace SOFA_bioscoop.Domain
                 projectName = "Sprint Project";
             }
 
-            SprintReport report = new SprintReport(companyName, projectName);
-            report.generateContent();
+            return new SprintReport(companyName, projectName);
+        }
+
+        public SprintReport generateReport(Sprint sprint)
+        {
+            SprintReport report = createSprintReportDto(sprint);
+            report.content = new BasicSprintReportWrapper(report, sprint).GenerateReport();
+            return report;
+        }
+
+        public SprintReport generateDecoratedReport(Sprint sprint, ReportHeaderData header, ReportFooterData footer)
+        {
+            SprintReport report = createSprintReportDto(sprint);
+            report.companyName = header.companyName;
+            report.projectName = header.projectName;
+
+            ISprintReport decorated = new BasicSprintReportWrapper(report, sprint);
+            decorated = new HeaderDecorator(decorated, header);
+            decorated = new FooterDecorator(decorated, footer);
+            report.content = decorated.GenerateReport();
             return report;
         }
 
         public void exportReport(SprintReport report)
         {
-            exportStrategy.exportReport(report);
+            string text = report.content != null ? report.content : "";
+            exportStrategy.exportReport(text);
         }
     }
 }

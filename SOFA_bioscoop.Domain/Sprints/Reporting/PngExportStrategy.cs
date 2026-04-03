@@ -4,10 +4,10 @@ namespace SOFA_bioscoop.Domain
 {
     public class PngExportStrategy : ExportStrategy
     {
-        public void exportReport(SprintReport report)
+        public void exportReport(string content)
         {
             Console.WriteLine("=== Exporting Sprint Report as PNG ===");
-            Console.WriteLine(report.content);
+            Console.WriteLine(content);
             Console.WriteLine("=== End PNG Export ===");
         }
     }

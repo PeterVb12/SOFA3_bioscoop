@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOFA3_bioscoop", "SOFA3_bioscoop\SOFA3_bioscoop.csproj", "{8748F008-206C-4890-A108-7E113FA9B3A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFA3_bioscoop", "SOFA3_bioscoop\SOFA3_bioscoop.csproj", "{8748F008-206C-4890-A108-7E113FA9B3A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOFA_bioscoop.Domain", "SOFA_bioscoop.Domain\SOFA_bioscoop.Domain.csproj", "{A4A1D712-621B-4078-AE31-914A1D55DF13}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFA3_bioscoop.Domain", "SOFA_bioscoop.Domain\SOFA3_bioscoop.Domain.csproj", "{9CC4DE15-B0EF-42F5-9FAC-02C60661E9F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFA3_bioscoop.Application", "SOFA3_bioscoop.Application\SOFA3_bioscoop.Application.csproj", "{B768EEDE-F166-4882-BAD3-D9EFC729EB9B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFA3_bioscoop.DomainServices", "SOFA3_bioscoop.DomainServices\SOFA3_bioscoop.DomainServices.csproj", "{192B2DB9-5E9A-410C-9902-E533CD5E06D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFA3_bioscoop.Infrastructure", "SOFA3_bioscoop.Infrastructure\SOFA3_bioscoop.Infrastructure.csproj", "{7EC0AE71-EE03-4756-ACC2-0132B9DF2F57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,22 @@ Global
 		{A4A1D712-621B-4078-AE31-914A1D55DF13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4A1D712-621B-4078-AE31-914A1D55DF13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4A1D712-621B-4078-AE31-914A1D55DF13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CC4DE15-B0EF-42F5-9FAC-02C60661E9F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CC4DE15-B0EF-42F5-9FAC-02C60661E9F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CC4DE15-B0EF-42F5-9FAC-02C60661E9F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CC4DE15-B0EF-42F5-9FAC-02C60661E9F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B768EEDE-F166-4882-BAD3-D9EFC729EB9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B768EEDE-F166-4882-BAD3-D9EFC729EB9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B768EEDE-F166-4882-BAD3-D9EFC729EB9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B768EEDE-F166-4882-BAD3-D9EFC729EB9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{192B2DB9-5E9A-410C-9902-E533CD5E06D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{192B2DB9-5E9A-410C-9902-E533CD5E06D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{192B2DB9-5E9A-410C-9902-E533CD5E06D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{192B2DB9-5E9A-410C-9902-E533CD5E06D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EC0AE71-EE03-4756-ACC2-0132B9DF2F57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EC0AE71-EE03-4756-ACC2-0132B9DF2F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EC0AE71-EE03-4756-ACC2-0132B9DF2F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EC0AE71-EE03-4756-ACC2-0132B9DF2F57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
