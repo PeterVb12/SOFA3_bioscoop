@@ -17,7 +17,7 @@ namespace SOFA_bioscoop.Domain
             this.person = person;
             this.notificationServices = notificationServices;
         }
-
+        //hoihoi
         public void Update(Message message)
         {
             if (message.Sender.Equals(person)) return;
