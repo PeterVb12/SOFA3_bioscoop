@@ -59,11 +59,6 @@ namespace SOFA_bioscoop.Domain
         sprint.SetState(sprint.GetInProgressState());
     }
 
-    public void UploadReviewSummary(Sprint sprint, Document summary)
-    {
-        throw new InvalidOperationException("Start sprint first to upload summary");
-    }
-
     public void UploadReviewSummary(Sprint sprint, string summary)
     {
         throw new InvalidOperationException("Start sprint first to upload summary");

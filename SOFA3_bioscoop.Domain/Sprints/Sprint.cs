@@ -19,7 +19,9 @@ namespace SOFA_bioscoop.Domain
         private Project linkedProject;
         private ISprintState state;
         private string? reviewSummary;
-        private DevelopmentPipeline? developmentPipeline;
+        public DevelopmentPipeline? developmentPipeline;
+        public INotificationService notificationService;
+        private List<Person> scrumTeam = new List<Person>();
 
         // Alle states als attributes
         private readonly ISprintState createdState;
@@ -37,7 +39,9 @@ namespace SOFA_bioscoop.Domain
                       DateTime endDate,
                       List<BacklogItem> sprintBacklog,
                       ISprintTypeStrategy strategy,
-                      Project linkedProject)
+                      Project linkedProject,
+                      DevelopmentPipeline developmentPipeline,
+                      INotificationService notificationService)
         {
             this.name = name;
             this.startDate = startDate;
@@ -45,6 +49,8 @@ namespace SOFA_bioscoop.Domain
             this.sprintBacklog = sprintBacklog;
             this.strategy = strategy;
             this.linkedProject = linkedProject;
+            this.developmentPipeline = developmentPipeline;
+            this.notificationService = notificationService;
 
             // States initialiseren
             createdState = new CreatedState();
@@ -84,6 +90,14 @@ namespace SOFA_bioscoop.Domain
             reviewSummary = summary;
         }
 
+        public void AddTeamMember(Person person)
+        {
+            scrumTeam.Add(person);
+        }
+        public void RemoveTeamMember(Person person)
+        {
+            scrumTeam.Remove(person);
+        }
         public bool HasReviewSummary()
         {
             return reviewSummary != null;
@@ -93,6 +107,7 @@ namespace SOFA_bioscoop.Domain
         {
             state.UploadReviewSummary(this, summary);
         }
+        
 
         public void MarkAsReviewed()
         {
@@ -136,12 +151,6 @@ namespace SOFA_bioscoop.Domain
         public void HandlePostFinish()
         {
             state.HandlePostFinish(this);
-        }
-
-        public DevelopmentPipeline? Pipeline
-        {
-            get { return developmentPipeline; }
-            set { developmentPipeline = value; }
         }
 
         public void RunReleasePipeline()

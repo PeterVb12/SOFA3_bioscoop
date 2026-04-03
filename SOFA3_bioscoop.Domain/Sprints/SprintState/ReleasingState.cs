@@ -11,67 +11,80 @@ namespace SOFA_bioscoop.Domain
     {
         public void AddBacklogItem(Sprint sprint, BacklogItem item)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is waiting to be released");
         }
 
         public void CancelRelease(Sprint sprint)
         {
-            throw new NotImplementedException();
+            sprint.notificationService.Send(sprint.GetScrumMaster(), "Results insufficient, release cancelled");
+            sprint.notificationService.Send(sprint.GetProductOwner(), "Results insufficient, release cancelled");
+            sprint.SetState(sprint.GetCancelledState());
         }
 
         public void FinishSprint(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is waiting to be released");
         }
 
         public void HandlePostFinish(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is waiting to be released");
         }
 
         public void OnPipelineFailure(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is waiting to be released");
         }
 
         public void OnPipelineSuccess(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is waiting to be released");
         }
 
         public void RetryRelease(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is waiting to be released");
         }
 
         public void StartPipeline(Sprint sprint)
         {
-            throw new NotImplementedException();
+            try
+            {
+                //!!moet exception uit komen
+                sprint.developmentPipeline.ReleasePipeline();
+                sprint.notificationService.Send(sprint.GetScrumMaster(), "Release succesful");
+                sprint.SetState(sprint.GetReleasedState());
+            }
+            catch (Exception)
+            {
+                sprint.notificationService.Send(sprint.GetScrumMaster(), "Release failed");
+            }
+            
         }
 
         public void StartSprint(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is waiting to be released");
         }
 
         public void UploadReviewSummary(Sprint sprint, Document summary)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is waiting to be released");
         }
 
         public void UploadReviewSummary(Sprint sprint, string summary)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is waiting to be released");
         }
 
         public void MarkAsReviewed(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is waiting to be released");
         }
 
         public void ValidateEdit(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is waiting to be released");
         }
     }
 }
