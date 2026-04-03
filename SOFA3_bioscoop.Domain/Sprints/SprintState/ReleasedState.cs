@@ -50,11 +50,6 @@ namespace SOFA_bioscoop.Domain
             throw new NotImplementedException();
         }
 
-        public void UploadReviewSummary(Sprint sprint, Document summary)
-        {
-            throw new NotImplementedException();
-        }
-
         public void UploadReviewSummary(Sprint sprint, string summary)
         {
             throw new NotImplementedException();

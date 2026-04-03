@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SOFA_bioscoop.Domain
 {
-    internal interface IPublisher
+    public interface IPublisher
     {
+        void AddObserver(IObserver observer);
+        void RemoveObserver(IObserver observer);
+        void NotifyObservers(Message message);
     }
 }
