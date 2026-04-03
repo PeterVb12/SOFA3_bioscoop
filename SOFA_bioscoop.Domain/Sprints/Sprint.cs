@@ -20,6 +20,7 @@ namespace SOFA_bioscoop.Domain
         private ISprintState state;
         private string? reviewSummary;
         private DevelopmentPipeline? developmentPipeline;
+        private List<Person> persons = new List<Person>();
 
         // Alle states als attributes
         private readonly ISprintState createdState;
@@ -144,9 +145,40 @@ namespace SOFA_bioscoop.Domain
             set { developmentPipeline = value; }
         }
 
+        public INotificationService? NotificationService { get; set; }
+
+        public void AddPerson(Person person)
+        {
+            persons.Add(person);
+        }
+
+        public Person GetScrumMaster()
+        {
+            foreach (Person person in persons)
+            {
+                if (person.Role == Role.ScrumMaster)
+                {
+                    return person;
+                }
+            }
+
+            throw new InvalidOperationException("No Scrum Master in sprint team.");
+        }
+
         public void RunReleasePipeline()
         {
-            developmentPipeline?.ReleasePipeline();
+            try
+            {
+                developmentPipeline?.ReleasePipeline();
+            }
+            catch (Exception)
+            {
+                if (NotificationService != null && developmentPipeline != null)
+                {
+                    Person sm = GetScrumMaster();
+                    NotificationService.Send(sm, "Pipeline failed");
+                }
+            }
         }
 
         public void StartPipeline()

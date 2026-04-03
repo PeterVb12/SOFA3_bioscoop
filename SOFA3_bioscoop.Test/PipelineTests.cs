@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using SOFA_bioscoop.Domain;
 using SOFA_bioscoop.Domain.Pipelines;
 using SOFA3_bioscoop.Test.TestSupport;
 using Xunit;
@@ -52,5 +54,111 @@ namespace SOFA3_bioscoop.Test
             Assert.DoesNotContain("Deploying to production", output);
         }
 
+        [Fact]
+        public void Pipeline_ShouldNotifyScrumMaster_WhenFailureOccurs()
+        {
+            const string scrumMasterName = "Pat";
+            var sprint = new Sprint(
+                "Sprint1",
+                DateTime.UtcNow,
+                DateTime.UtcNow.AddDays(14),
+                new List<BacklogItem>(),
+                new ReleaseStrategy(),
+                new Project());
+            sprint.AddPerson(new Person(scrumMasterName, Role.ScrumMaster));
+            sprint.AddPerson(new Person("Dev Dan", Role.Developer));
+            sprint.NotificationService = new ConsoleNotificationService();
+            sprint.Pipeline = new FailingPipeline();
+
+            string output = ConsoleCapture.Run(() => sprint.RunReleasePipeline());
+
+            Assert.Contains("Pipeline failed", output);
+            Assert.Contains(scrumMasterName, output);
+        }
+
+        [Fact]
+        public void GetScrumMaster_ShouldReturnCorrectPerson()
+        {
+            var sprint = new Sprint(
+                "S",
+                DateTime.UtcNow,
+                DateTime.UtcNow.AddDays(7),
+                new List<BacklogItem>(),
+                new ReleaseStrategy(),
+                new Project());
+            sprint.AddPerson(new Person("Bob", Role.Developer));
+            sprint.AddPerson(new Person("Sam SM", Role.ScrumMaster));
+            sprint.AddPerson(new Person("Tina", Role.Tester));
+
+            Person sm = sprint.GetScrumMaster();
+
+            Assert.Equal(Role.ScrumMaster, sm.Role);
+            Assert.Equal("Sam SM", sm.Name);
+        }
+
+        [Fact]
+        public void GetScrumMaster_WhenNoScrumMaster_ShouldThrow()
+        {
+            var sprint = new Sprint(
+                "S",
+                DateTime.UtcNow,
+                DateTime.UtcNow.AddDays(7),
+                new List<BacklogItem>(),
+                new ReleaseStrategy(),
+                new Project());
+            sprint.AddPerson(new Person("OnlyDev", Role.Developer));
+
+            Assert.Throws<InvalidOperationException>(() => sprint.GetScrumMaster());
+        }
+
+        [Fact]
+        public void Notification_ShouldContainCorrectMessage()
+        {
+            const string scrumMasterName = "Jordan";
+            var sprint = new Sprint(
+                "Sprint2",
+                DateTime.UtcNow,
+                DateTime.UtcNow.AddDays(14),
+                new List<BacklogItem>(),
+                new ReleaseStrategy(),
+                new Project());
+            sprint.AddPerson(new Person(scrumMasterName, Role.ScrumMaster));
+            sprint.NotificationService = new ConsoleNotificationService();
+            sprint.Pipeline = new FailingPipeline();
+
+            string output = ConsoleCapture.Run(() => sprint.RunReleasePipeline());
+
+            Assert.Contains("Notification", output);
+            Assert.Contains(scrumMasterName, output);
+            Assert.Contains("Pipeline failed", output);
+        }
+    }
+
+    internal class FailingPipeline : DevelopmentPipeline
+    {
+        protected override void FetchSources()
+        {
+            throw new Exception("simulated pipeline failure");
+        }
+
+        protected override void InstallPackages()
+        {
+        }
+
+        protected override void Build()
+        {
+        }
+
+        protected override void Test()
+        {
+        }
+
+        protected override void Analyse()
+        {
+        }
+
+        protected override void Deploy()
+        {
+        }
     }
 }
