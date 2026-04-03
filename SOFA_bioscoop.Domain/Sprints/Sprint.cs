@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,27 +13,159 @@ namespace SOFA_bioscoop.Domain
         private string name;
         private DateTime startDate;
         private DateTime endDate;
-
         private List<BacklogItem> sprintBacklog = new List<BacklogItem>();
-        private ISprintState state;
         private ISprintTypeStrategy strategy;
         private Project linkedProject;
+        private ISprintState state;
+        private string? reviewSummary;
 
-        public Sprint(string name, 
-                      DateTime startDate, 
-                      DateTime endDate, 
-                      List<BacklogItem> sprintBacklog, 
-                      ISprintTypeStrategy strategy, 
+        // Alle states als attributes
+        private readonly ISprintState createdState;
+        private readonly ISprintState inProgressState;
+        private readonly ISprintState finishedState;
+        private readonly ISprintState releasingState;
+        private readonly ISprintState releasedState;
+        private readonly ISprintState failedReleaseState;
+        private readonly ISprintState cancelledState;
+        private readonly ISprintState inReviewState;
+        private readonly ISprintState closedState;
+
+        public Sprint(string name,
+                      DateTime startDate,
+                      DateTime endDate,
+                      List<BacklogItem> sprintBacklog,
+                      ISprintTypeStrategy strategy,
                       Project linkedProject)
         {
             this.name = name;
             this.startDate = startDate;
             this.endDate = endDate;
             this.sprintBacklog = sprintBacklog;
-            this.state = new CreatedState();
             this.strategy = strategy;
             this.linkedProject = linkedProject;
+
+            // States initialiseren
+            createdState = new CreatedState();
+            inProgressState = new InProgressState();
+            finishedState = new FinishedState();
+            releasingState = new ReleasingState();
+            releasedState = new ReleasedState();
+            failedReleaseState = new FailedReleaseState();
+            cancelledState = new CancelledState();
+            inReviewState = new InReviewState();
+            closedState = new ClosedState();
+
+            // Beginstate
+            this.state = createdState;
         }
+
+
+        public ISprintState GetCreatedState() => createdState;
+        public ISprintState GetInProgressState() => inProgressState;
+        public ISprintState GetFinishedState() => finishedState;
+        public ISprintState GetReleasingState() => releasingState;
+        public ISprintState GetReleasedState() => releasedState;
+        public ISprintState GetFailedReleaseState() => failedReleaseState;
+        public ISprintState GetCancelledState() => cancelledState;
+        public ISprintState GetInReviewState() => inReviewState;
+        public ISprintState GetClosedState() => closedState;
+        public ISprintState GetPostFinishedState() => strategy.getPostFinishState(this);
+
+        public void SetState(ISprintState state) => this.state = state;
+        public void SetReviewSummary(string summary)
+        {
+            reviewSummary = summary;
+        }
+
+        public bool HasReviewSummary()
+        {
+            return reviewSummary != null;
+        }
+
+        public void UploadReviewSummary(string summary)
+        {
+            state.UploadReviewSummary(this, summary);
+        }
+
+        public void MarkAsReviewed()
+        {
+            state.MarkAsReviewed(this);
+        }
+
+        // Sprint methodes delegeren naar state
+        public void EditName(string name)
+        {
+            state.ValidateEdit(this);
+            this.name = name;
+        }
+
+        public void EditStartDate(DateTime startDate)
+        {
+            state.ValidateEdit(this);
+            this.startDate = startDate;
+        }
+
+        public void EditEndDate(DateTime endDate)
+        {
+            state.ValidateEdit(this);
+            this.endDate = endDate;
+        }
+
+        public void AddBacklogItem(BacklogItem item)
+        {
+            state.AddBacklogItem(this, item);
+        }
+
+        public void StartSprint()
+        {
+            state.StartSprint(this);
+        }
+
+        public void FinishSprint()
+        {
+            state.FinishSprint(this);
+        }
+
+        public void HandlePostFinish()
+        {
+            state.HandlePostFinish(this);
+        }
+
+        public void StartPipeline()
+        {
+            state.StartPipeline(this);
+        }
+
+        public void OnPipelineSuccess()
+        {
+            state.OnPipelineSuccess(this);
+        }
+
+        public void OnPipelineFailure()
+        {
+            state.OnPipelineFailure(this);
+        }
+
+        public void RetryRelease()
+        {
+            state.RetryRelease(this);
+        }
+
+        public void CancelRelease()
+        {
+            state.CancelRelease(this);
+        }
+
+        public void UploadReviewSummary(Document summary)
+        {
+            state.UploadReviewSummary(this, summary);
+        }
+
+        public void ExecutePostFinish()
+        {
+            strategy.ExecutePostFinish(this);
+        }
+
     }
 }
 

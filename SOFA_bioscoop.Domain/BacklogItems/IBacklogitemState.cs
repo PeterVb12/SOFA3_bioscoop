@@ -21,5 +21,7 @@ namespace SOFA_bioscoop.Domain.BacklogItems
             void Approve(BacklogItem item);
 
             void DenyDefinitionOfDone(BacklogItem item);
+
+            void AddThread(Thread thread);
     }
 }

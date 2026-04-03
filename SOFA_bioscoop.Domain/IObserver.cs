@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOFA_bioscoop.Domain
 {
-    public interface ISprintTypeStrategy
+    internal interface IObserver
     {
-        ISprintState getPostFinishState(Sprint sprint);
-        void cancel(Sprint sprint);
     }
 }
