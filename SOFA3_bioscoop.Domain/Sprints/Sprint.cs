@@ -153,9 +153,26 @@ namespace SOFA_bioscoop.Domain
             state.HandlePostFinish(this);
         }
 
+        public DevelopmentPipeline? Pipeline
+        {
+            get { return developmentPipeline; }
+            set { developmentPipeline = value; }
+        }
+
         public void RunReleasePipeline()
         {
-            developmentPipeline?.ReleasePipeline();
+            try
+            {
+                developmentPipeline?.ReleasePipeline();
+            }
+            catch (Exception)
+            {
+                if (NotificationService != null && developmentPipeline != null)
+                {
+                    Person sm = GetScrumMaster();
+                    NotificationService.Send(sm, "Pipeline failed");
+                }
+            }
         }
 
         public void StartPipeline()
