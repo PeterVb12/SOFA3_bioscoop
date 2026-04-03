@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOFA3_bioscoop", "SOFA3_bioscoop\SOFA3_bioscoop.csproj", "{8748F008-206C-4890-A108-7E113FA9B3A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOFA3_bioscoop.Domain", "SOFA_bioscoop.Domain\SOFA_bioscoop.Domain.csproj", "{A4A1D712-621B-4078-AE31-914A1D55DF13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOFA3_bioscoop.Domain", "SOFA3_bioscoop.Domain\SOFA3_bioscoop.Domain.csproj", "{A4A1D712-621B-4078-AE31-914A1D55DF13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
