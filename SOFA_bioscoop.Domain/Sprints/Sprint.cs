@@ -74,6 +74,11 @@ namespace SOFA_bioscoop.Domain
         public ISprintState GetPostFinishedState() => strategy.getPostFinishState(this);
 
         public void SetState(ISprintState state) => this.state = state;
+
+        public void SetProject(Project project)
+        {
+            linkedProject = project;
+        }
         public void SetReviewSummary(string summary)
         {
             reviewSummary = summary;
@@ -167,11 +172,6 @@ namespace SOFA_bioscoop.Domain
         public void CancelRelease()
         {
             state.CancelRelease(this);
-        }
-
-        public void UploadReviewSummary(Document summary)
-        {
-            state.UploadReviewSummary(this, summary);
         }
 
         public void ExecutePostFinish()

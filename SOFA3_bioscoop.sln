@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFA3_bioscoop.DomainServic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFA3_bioscoop.Infrastructure", "SOFA3_bioscoop.Infrastructure\SOFA3_bioscoop.Infrastructure.csproj", "{7EC0AE71-EE03-4756-ACC2-0132B9DF2F57}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOFA3_bioscoop.Test", "SOFA3_bioscoop.Test\SOFA3_bioscoop.Test.csproj", "{802EDCA3-1FEE-46F3-A04B-B0712A11F6B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{7EC0AE71-EE03-4756-ACC2-0132B9DF2F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EC0AE71-EE03-4756-ACC2-0132B9DF2F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EC0AE71-EE03-4756-ACC2-0132B9DF2F57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{802EDCA3-1FEE-46F3-A04B-B0712A11F6B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{802EDCA3-1FEE-46F3-A04B-B0712A11F6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{802EDCA3-1FEE-46F3-A04B-B0712A11F6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{802EDCA3-1FEE-46F3-A04B-B0712A11F6B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

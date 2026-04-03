@@ -1,4 +1,4 @@
-﻿using SOFA_bioscoop.Domain.BacklogItems;
+using SOFA_bioscoop.Domain.BacklogItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace SOFA_bioscoop.Domain
             threads.Add(thread);
         }
 
-        public void SetState(IBacklogItemState state)
+        public void SetState(IBacklogitemState state)
         {
             this.state = state;
         }

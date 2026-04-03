@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +10,6 @@ namespace SOFA_bioscoop.Domain
     {
         ISprintState getPostFinishState(Sprint sprint);
         void cancel(Sprint sprint);
+        void ExecutePostFinish(Sprint sprint);
     }
 }

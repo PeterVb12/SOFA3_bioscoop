@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
@@ -63,5 +63,15 @@ namespace SOFA_bioscoop.Domain
     {
         throw new InvalidOperationException("Start sprint first to upload summary");
     }
-}
+
+    public void UploadReviewSummary(Sprint sprint, string summary)
+    {
+        throw new InvalidOperationException("Start sprint first to upload summary");
+    }
+
+    public void MarkAsReviewed(Sprint sprint)
+    {
+        throw new InvalidOperationException("Start sprint first");
+    }
+    }
 }

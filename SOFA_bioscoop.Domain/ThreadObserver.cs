@@ -1,9 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SOFA3_bioscoop.DomainServices;
 
 namespace SOFA_bioscoop.Domain
 {

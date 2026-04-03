@@ -1,13 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SOFA_bioscoop.Domain
 {
-    public class ReviewedState : ISprintState
+    public class FailedReleaseState : ISprintState
     {
         public void AddBacklogItem(Sprint sprint, BacklogItem item)
         {

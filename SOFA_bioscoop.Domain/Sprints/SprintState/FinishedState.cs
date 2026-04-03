@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
@@ -57,6 +57,15 @@ namespace SOFA_bioscoop.Domain
         public void UploadReviewSummary(Sprint sprint, Document summary)
         {
             //generate review method call
+        }
+
+        public void UploadReviewSummary(Sprint sprint, string summary)
+        {
+        }
+
+        public void MarkAsReviewed(Sprint sprint)
+        {
+            throw new InvalidOperationException("Sprint is finished");
         }
 
         public void ValidateEdit(Sprint sprint)
