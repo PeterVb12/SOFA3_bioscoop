@@ -1,6 +1,7 @@
 using SOFA_bioscoop.Application.Reporting;
 using SOFA_bioscoop.Domain.Reporting;
 using SOFA3_bioscoop.Test.Fakes;
+using SOFA3_bioscoop.Test.TestSupport;
 using Xunit;
 
 namespace SOFA3_bioscoop.Test
@@ -74,6 +75,42 @@ namespace SOFA3_bioscoop.Test
             Assert.Equal(report.content, strategyA.LastContent);
             Assert.Equal(report.content, strategyB.LastContent);
             Assert.NotSame(strategyA, strategyB);
+        }
+
+        [Fact]
+        public void GenerateReport_WithSprint_SetsSprintProjectName()
+        {
+            var factory = new SprintReportFactory(new RecordingExportStrategy());
+            var sprint = SprintTestFactories.CreateReleaseSprint();
+
+            SprintReport report = factory.generateReport(sprint);
+
+            Assert.Equal("Sprint Project", report.projectName);
+        }
+
+        [Fact]
+        public void GenerateDecoratedReport_WithSprint_UsesSprintInWrapper()
+        {
+            var factory = new SprintReportFactory(new RecordingExportStrategy());
+            var sprint = SprintTestFactories.CreateReleaseSprint();
+            var header = new ReportHeaderData("HCo", "HPr", "1.0", "today", "lg");
+            var footer = new ReportFooterData("me", "note");
+
+            SprintReport report = factory.generateDecoratedReport(sprint, header, footer);
+
+            Assert.Contains("Current sprint", report.content);
+        }
+
+        [Fact]
+        public void ExportReport_WhenContentNull_PassesEmptyStringToStrategy()
+        {
+            var strategy = new RecordingExportStrategy();
+            var factory = new SprintReportFactory(strategy);
+            var report = new SprintReport("A", "B") { content = null! };
+
+            factory.exportReport(report);
+
+            Assert.Equal("", strategy.LastContent);
         }
     }
 }

@@ -172,6 +172,11 @@ namespace SOFA_bioscoop.Domain
             state.AddBacklogItem(this, item);
         }
 
+        internal void RegisterBacklogItem(BacklogItem item)
+        {
+            sprintBacklog.Add(item);
+        }
+
         public void StartSprint()
         {
             state.StartSprint(this);

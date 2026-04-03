@@ -11,7 +11,7 @@ namespace SOFA_bioscoop.Domain
     {
         public void AddBacklogItem(Sprint sprint, BacklogItem item)
         {
-            sprint.AddBacklogItem(item);
+            sprint.RegisterBacklogItem(item);
         }
 
         public void CancelRelease(Sprint sprint)

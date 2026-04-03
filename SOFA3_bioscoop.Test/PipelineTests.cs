@@ -132,6 +132,19 @@ namespace SOFA3_bioscoop.Test
             Assert.Contains(scrumMasterName, output);
             Assert.Contains("Pipeline failed", output);
         }
+
+        [Theory]
+        [InlineData(typeof(FailingAfterFetchPipeline))]
+        [InlineData(typeof(FailingAfterInstallPipeline))]
+        [InlineData(typeof(FailingAfterBuildPipeline))]
+        [InlineData(typeof(FailingAfterTestPipeline))]
+        [InlineData(typeof(FailingAfterAnalysePipeline))]
+        [InlineData(typeof(FailingAfterDeployPipeline))]
+        public void DevelopmentPipeline_ReleasePipeline_ThrowsAtEachStep(Type pipelineType)
+        {
+            var pipeline = (DevelopmentPipeline)Activator.CreateInstance(pipelineType)!;
+            Assert.Throws<Exception>(() => pipeline.ReleasePipeline());
+        }
     }
 
     internal class FailingPipeline : DevelopmentPipeline
@@ -160,5 +173,65 @@ namespace SOFA3_bioscoop.Test
         protected override void Deploy()
         {
         }
+    }
+
+    internal sealed class FailingAfterFetchPipeline : DevelopmentPipeline
+    {
+        protected override void FetchSources() => throw new Exception("fetch");
+        protected override void InstallPackages() { }
+        protected override void Build() { }
+        protected override void Test() { }
+        protected override void Analyse() { }
+        protected override void Deploy() { }
+    }
+
+    internal sealed class FailingAfterInstallPipeline : DevelopmentPipeline
+    {
+        protected override void FetchSources() { }
+        protected override void InstallPackages() => throw new Exception("install");
+        protected override void Build() { }
+        protected override void Test() { }
+        protected override void Analyse() { }
+        protected override void Deploy() { }
+    }
+
+    internal sealed class FailingAfterBuildPipeline : DevelopmentPipeline
+    {
+        protected override void FetchSources() { }
+        protected override void InstallPackages() { }
+        protected override void Build() => throw new Exception("build");
+        protected override void Test() { }
+        protected override void Analyse() { }
+        protected override void Deploy() { }
+    }
+
+    internal sealed class FailingAfterTestPipeline : DevelopmentPipeline
+    {
+        protected override void FetchSources() { }
+        protected override void InstallPackages() { }
+        protected override void Build() { }
+        protected override void Test() => throw new Exception("test");
+        protected override void Analyse() { }
+        protected override void Deploy() { }
+    }
+
+    internal sealed class FailingAfterAnalysePipeline : DevelopmentPipeline
+    {
+        protected override void FetchSources() { }
+        protected override void InstallPackages() { }
+        protected override void Build() { }
+        protected override void Test() { }
+        protected override void Analyse() => throw new Exception("analyse");
+        protected override void Deploy() { }
+    }
+
+    internal sealed class FailingAfterDeployPipeline : DevelopmentPipeline
+    {
+        protected override void FetchSources() { }
+        protected override void InstallPackages() { }
+        protected override void Build() { }
+        protected override void Test() { }
+        protected override void Analyse() { }
+        protected override void Deploy() => throw new Exception("deploy");
     }
 }
