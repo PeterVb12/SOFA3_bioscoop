@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using SOFA_bioscoop.Domain.Pipelines;
 
 namespace SOFA_bioscoop.Domain
 {
@@ -18,6 +19,7 @@ namespace SOFA_bioscoop.Domain
         private Project linkedProject;
         private ISprintState state;
         private string? reviewSummary;
+        private DevelopmentPipeline? developmentPipeline;
 
         // Alle states als attributes
         private readonly ISprintState createdState;
@@ -72,6 +74,11 @@ namespace SOFA_bioscoop.Domain
         public ISprintState GetPostFinishedState() => strategy.getPostFinishState(this);
 
         public void SetState(ISprintState state) => this.state = state;
+
+        public void SetProject(Project project)
+        {
+            linkedProject = project;
+        }
         public void SetReviewSummary(string summary)
         {
             reviewSummary = summary;
@@ -131,6 +138,17 @@ namespace SOFA_bioscoop.Domain
             state.HandlePostFinish(this);
         }
 
+        public DevelopmentPipeline? Pipeline
+        {
+            get { return developmentPipeline; }
+            set { developmentPipeline = value; }
+        }
+
+        public void RunReleasePipeline()
+        {
+            developmentPipeline?.ReleasePipeline();
+        }
+
         public void StartPipeline()
         {
             state.StartPipeline(this);
@@ -154,11 +172,6 @@ namespace SOFA_bioscoop.Domain
         public void CancelRelease()
         {
             state.CancelRelease(this);
-        }
-
-        public void UploadReviewSummary(Document summary)
-        {
-            state.UploadReviewSummary(this, summary);
         }
 
         public void ExecutePostFinish()
