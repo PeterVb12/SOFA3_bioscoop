@@ -9,6 +9,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SOFA_bioscoop.Domain\SOFA3_bioscoop.Domain.csproj" />
+    <ProjectReference Include="..\SOFA3_bioscoop.Application\SOFA3_bioscoop.Application.csproj" />
+    <ProjectReference Include="..\SOFA3_bioscoop.Infrastructure\SOFA3_bioscoop.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

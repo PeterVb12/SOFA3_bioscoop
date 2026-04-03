@@ -1,4 +1,8 @@
-namespace SOFA_bioscoop.Domain
+using SOFA_bioscoop.Domain;
+using SOFA_bioscoop.Domain.Reporting;
+using SOFA_bioscoop.Infrastructure.Reporting;
+
+namespace SOFA_bioscoop.Application.Reporting
 {
     public class SprintReportFactory
     {

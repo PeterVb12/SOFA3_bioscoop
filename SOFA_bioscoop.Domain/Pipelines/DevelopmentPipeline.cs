@@ -1,6 +1,6 @@
 using System;
 
-namespace SOFA_bioscoop.Domain
+namespace SOFA_bioscoop.Domain.Pipelines
 {
     public abstract class DevelopmentPipeline
     {

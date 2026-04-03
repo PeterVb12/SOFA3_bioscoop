@@ -1,4 +1,4 @@
-namespace SOFA_bioscoop.Domain
+namespace SOFA_bioscoop.Domain.Reporting
 {
     public interface ISprintReport
     {

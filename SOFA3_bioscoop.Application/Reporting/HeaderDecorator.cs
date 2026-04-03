@@ -1,6 +1,7 @@
 using System.Text;
+using SOFA_bioscoop.Domain.Reporting;
 
-namespace SOFA_bioscoop.Domain
+namespace SOFA_bioscoop.Application.Reporting
 {
     public class HeaderDecorator : SprintReportDecorator
     {

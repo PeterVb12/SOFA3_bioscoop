@@ -1,4 +1,6 @@
-namespace SOFA_bioscoop.Domain
+using SOFA_bioscoop.Domain.Reporting;
+
+namespace SOFA_bioscoop.Application.Reporting
 {
     public abstract class SprintReportDecorator : ISprintReport
     {

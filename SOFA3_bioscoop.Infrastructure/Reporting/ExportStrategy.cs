@@ -1,4 +1,4 @@
-namespace SOFA_bioscoop.Domain
+namespace SOFA_bioscoop.Infrastructure.Reporting
 {
     public interface ExportStrategy
     {

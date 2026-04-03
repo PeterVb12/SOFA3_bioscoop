@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using SOFA_bioscoop.Domain.Pipelines;
 
 namespace SOFA_bioscoop.Domain
 {
