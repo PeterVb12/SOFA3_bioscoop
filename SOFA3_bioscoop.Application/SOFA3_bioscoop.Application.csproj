@@ -1,10 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SOFA3_bioscoop.Domain\SOFA3_bioscoop.Domain.csproj" />
+    <ProjectReference Include="..\SOFA3_bioscoop.Infrastructure\SOFA3_bioscoop.Infrastructure.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using SOFA_bioscoop.Domain.BacklogItems;
+using SOFA_bioscoop.Domain.BacklogItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,63 +7,82 @@ using System.Threading.Tasks;
 
 namespace SOFA_bioscoop.Domain
 {
-    public class BacklogItem : IBacklogitemState
+    public class BacklogItem
     {
-        private string title;
-        private string description;
+        public string Title { get; set; }
+        public string Description { get; set; }
+
         private IBacklogitemState state;
-        private List<Thread> threads = new List<Thread>();
+        public List<Thread> threads = new List<Thread>();
 
-        public BacklogItem(string title, string description)
-        {
-            this.title = title;
-            this.description = description;
-            //state = new TodoState();
+        // Alle states als attributes
+        private readonly IBacklogitemState todoState;
+        private readonly IBacklogitemState doingState;
+        private readonly IBacklogitemState readyForTestingState;
+        private readonly IBacklogitemState testingState;
+        private readonly IBacklogitemState testedState;
+        private readonly IBacklogitemState doneState;
 
+        // Notificatie services voor testers en scrum master
+        private readonly List<INotificationService> notificationServices;
+        private readonly List<Person> testers;
+        private readonly Person scrumMaster;
 
-        }
-        public void AddThread(Thread thread)
+        public BacklogItem(string title, string description, List<Person> testers, Person scrumMaster, List<INotificationService> notificationServices)
         {
-            threads.Add(thread);
-        }
+            Title = title;
+            Description = description;
+            this.testers = testers;
+            this.scrumMaster = scrumMaster;
+            this.notificationServices = notificationServices;
 
-        public void SetState(IBacklogItemState state)
-        {
-            this.state = state;
-        }
-        public void Approve(BacklogItem item)
-        {
-            throw new NotImplementedException();
-        }
+            // States initialiseren
+            todoState = new TodoState();
+            doingState = new DoingState();
+            readyForTestingState = new ReadyForTestingState();
+            testingState = new TestingState();
+            testedState = new TestedState();
+            doneState = new DoneState();
 
-        public void DenyDefinitionOfDone(BacklogItem item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void FinishTesting(BacklogItem item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ReadyForTesting(BacklogItem item)
-        {
-            throw new NotImplementedException();
+            // Beginstate
+            state = todoState;
         }
 
-        public void Reject(BacklogItem item)
+        // State getters
+        public IBacklogitemState GetTodoState() => todoState;
+        public IBacklogitemState GetDoingState() => doingState;
+        public IBacklogitemState GetReadyForTestingState() => readyForTestingState;
+        public IBacklogitemState GetTestingState() => testingState;
+        public IBacklogitemState GetTestedState() => testedState;
+        public IBacklogitemState GetDoneState() => doneState;
+
+        public void SetState(IBacklogitemState state) => this.state = state;
+
+        // Publieke methodes die delegeren naar state
+        public void StartWork() => state.StartWork(this);
+        public void ReadyForTesting() => state.ReadyForTesting(this);
+        public void StartTesting() => state.StartTesting(this);
+        public void FinishTesting() => state.FinishTesting(this);
+        public void Approve() => state.Approve(this);
+        public void Deny() => state.Deny(this);
+        public void Reject() => state.Reject(this);
+
+        // Thread beheer
+        public void AddThread(Thread thread) => state.AddThread(this, thread);
+        public IReadOnlyList<Thread> GetThreads() => threads.AsReadOnly();
+
+        // Notificatie methodes
+        public void NotifyTesters()
         {
-            throw new NotImplementedException();
+            testers.ForEach(tester =>
+                notificationServices.ForEach(service =>
+                    service.Send(tester, $"Backlog item '{Title}' is klaar voor testing.")));
         }
 
-        public void StartTesting(BacklogItem item)
+        public void NotifyScrumMaster()
         {
-            throw new NotImplementedException();
-        }
-
-        public void StartWork(BacklogItem item)
-        {
-            throw new NotImplementedException();
+            notificationServices.ForEach(service =>
+                service.Send(scrumMaster, $"Backlog item '{Title}' is afgekeurd en teruggegaan naar Todo."));
         }
     }
 }

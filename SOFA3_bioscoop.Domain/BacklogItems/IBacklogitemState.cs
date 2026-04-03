@@ -20,8 +20,8 @@ namespace SOFA_bioscoop.Domain.BacklogItems
 
             void Approve(BacklogItem item);
 
-            void DenyDefinitionOfDone(BacklogItem item);
+            void Deny(BacklogItem item);
 
-            void AddThread(Thread thread);
+            void AddThread(BacklogItem item, Thread thread);
     }
 }

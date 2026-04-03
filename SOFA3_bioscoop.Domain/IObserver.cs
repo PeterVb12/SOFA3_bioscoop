@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SOFA_bioscoop.Domain
 {
-    internal interface IObserver
+    public interface IObserver
     {
+        void Update(Message message);
     }
 }

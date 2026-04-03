@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
@@ -18,42 +18,42 @@ namespace SOFA_bioscoop.Domain
 
         public void CancelRelease(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is in review");
         }
 
         public void FinishSprint(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is in review");
         }
 
         public void HandlePostFinish(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is in review");
         }
 
         public void OnPipelineFailure(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is in review");
         }
 
         public void OnPipelineSuccess(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is in review");
         }
 
         public void RetryRelease(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is in review");
         }
 
         public void StartPipeline(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is in review");
         }
 
         public void StartSprint(Sprint sprint)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Sprint is in review");
         }
 
         //"De
@@ -71,7 +71,7 @@ namespace SOFA_bioscoop.Domain
                 throw new InvalidOperationException("Upload review summary first");
             }
 
-            sprint.SetState(sprint.GetClosedState());
+            sprint.SetState(sprint.GetReviewedState());
         }
 
         public void ValidateEdit(Sprint sprint)
