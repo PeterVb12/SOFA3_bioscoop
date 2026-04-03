@@ -38,7 +38,7 @@ jobs:
           New-Item -Path ${{ runner.temp }}\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path ${{ runner.temp }}\scanner
       - name: Install coverlet
-        run: dotnet add SOFA3_bioscoop.Tests/SOFA3_bioscoop.Tests.csproj package coverlet.collector
+        run: dotnet add SOFA3_bioscoop.Test/SOFA3_bioscoop.Test.csproj package coverlet.collector
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
