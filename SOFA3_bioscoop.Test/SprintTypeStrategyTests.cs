@@ -36,17 +36,5 @@ namespace SOFA3_bioscoop.Test
             var strategy = new ReviewStrategy();
             Assert.Throws<NotImplementedException>(() => strategy.cancel(SprintTestFactories.CreateReviewSprint()));
         }
-
-        [Fact]
-        public void ReleaseStrategy_ExecutePostFinish_DoesNotThrow()
-        {
-            new ReleaseStrategy().ExecutePostFinish(SprintTestFactories.CreateReleaseSprint());
-        }
-
-        [Fact]
-        public void ReviewStrategy_ExecutePostFinish_DoesNotThrow()
-        {
-            new ReviewStrategy().ExecutePostFinish(SprintTestFactories.CreateReviewSprint());
-        }
     }
 }

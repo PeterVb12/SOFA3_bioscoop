@@ -81,7 +81,14 @@ namespace SOFA_bioscoop.Domain
         public ISprintState GetReviewedState() => reviewedState;
         public ISprintState GetClosedState() => closedState;
 
-        /// <summary>Compatibiliteit met oudere code / tests (zelfde als NotificationService property).</summary>
+        public string Name => name;
+
+        public DateTime StartDate => startDate;
+
+        public DateTime EndDate => endDate;
+
+        public Project LinkedProject => linkedProject;
+
         public INotificationService? NotificationService
         {
             get => notificationService;

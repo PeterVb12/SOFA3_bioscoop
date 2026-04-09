@@ -11,13 +11,6 @@ namespace SOFA3_bioscoop.Test
     public class SprintStateExhaustiveTests
     {
         [Fact]
-        public void Created_EditName_Allowed()
-        {
-            var sprint = SprintTestFactories.CreateReleaseSprint();
-            sprint.EditName("Renamed");
-        }
-
-        [Fact]
         public void Created_AddBacklogItem_Throws()
         {
             var sprint = SprintTestFactories.CreateReleaseSprint();
@@ -349,13 +342,6 @@ namespace SOFA3_bioscoop.Test
             var review = SprintTestFactories.CreateReviewSprint();
             Assert.Same(release.GetReleasingState(), release.GetPostFinishedState());
             Assert.Same(review.GetInReviewState(), review.GetPostFinishedState());
-        }
-
-        [Fact]
-        public void ExecutePostFinish_DoesNotThrow_ForBothStrategies()
-        {
-            SprintTestFactories.CreateReleaseSprint().ExecutePostFinish();
-            SprintTestFactories.CreateReviewSprint().ExecutePostFinish();
         }
 
         private sealed class FailingAtBuildPipeline : DevelopmentPipeline

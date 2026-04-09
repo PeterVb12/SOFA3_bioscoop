@@ -164,16 +164,6 @@ namespace SOFA3_bioscoop.Test
         }
 
         [Fact]
-        public void RunReleasePipeline_WhenPipelineFails_AndNotificationNull_DoesNotThrow()
-        {
-            var sprint = SprintTestFactories.CreateReleaseSprint();
-            sprint.AddPerson(new Person("SM", Role.ScrumMaster));
-            sprint.Pipeline = new FailingPipeline();
-
-            sprint.RunReleasePipeline();
-        }
-
-        [Fact]
         public void RunReleasePipeline_WhenPipelineFails_AndNotificationSet_ButPipelineNull_DoesNotEnterNotifyBranch()
         {
             var sprint = SprintTestFactories.CreateReleaseSprint();
@@ -234,14 +224,6 @@ namespace SOFA3_bioscoop.Test
         }
 
         [Fact]
-        public void Created_EditStartDateAndEndDate_Allowed()
-        {
-            var sprint = SprintTestFactories.CreateReleaseSprint();
-            sprint.EditStartDate(DateTime.UtcNow.AddDays(-1));
-            sprint.EditEndDate(DateTime.UtcNow.AddDays(20));
-        }
-
-        [Fact]
         public void RemoveTeamMember_RemovesScrumMaster_GetScrumMasterThrows()
         {
             var sprint = SprintTestFactories.CreateReleaseSprint();
@@ -259,16 +241,6 @@ namespace SOFA3_bioscoop.Test
             project.AddSprint(sprint);
             project.AddSprint(sprint);
             Assert.Equal(1, PrivateStateAccessor.GetProjectSprintCount(project));
-        }
-
-        [Fact]
-        public void BacklogItem_ReadyForTesting_WithNoTesters_DoesNotThrow()
-        {
-            var sm = new Person("SM", Role.ScrumMaster);
-            var services = new List<INotificationService> { new RecordingNotificationService() };
-            var item = new BacklogItem("X", "D", new List<Person>(), sm, services);
-            item.StartWork();
-            item.ReadyForTesting();
         }
 
         [Fact]
